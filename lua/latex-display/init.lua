@@ -1,15 +1,13 @@
 local function displayPdf()
     local dir = vim.fn.expand('%:h')
     local fileName = vim.fn.expand('%:t:r')
-    print(dir)
-    print(fileName)
-    -- os.execute('cd '.. dir .. ';pdflatex ' .. fileName .. '.tex')
-    -- -- os.execute("sleep 5")
-    -- os.execute('rm latex-display.log')
-    -- os.execute('rm *.log')
-    -- os.execute('rm *.aux')
-    -- os.execute('evince ' .. name .. '.pdf')
-    -- os.execute('rm *.pdf')
+    vim.api.nvim_command('tabnew')
+    vim.api.nvim_command('term')
+    vim.api.nvim_command('call nvim_paste("cd '.. dir..'\n", 1 ,-1)')
+    vim.api.nvim_command('call nvim_paste("pdflatex '.. fileName .. '.tex\n", 1 ,-1)')
+    vim.api.nvim_command('call nvim_paste("rm *.log *.aux\n", 1 ,-1)')
+    vim.api.nvim_command('call nvim_paste("evince '.. fileName .. '.pdf\n", 1 ,-1)')
+    vim.api.nvim_command('tabprev')
 end
 
 return {

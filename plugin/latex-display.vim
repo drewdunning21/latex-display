@@ -4,6 +4,7 @@ fun! LatexDisplay()
     lua require("latex-display").displayPdf()
 endfun
 
+
 augroup LatexDisplay
     autocmd!
 augroup END
